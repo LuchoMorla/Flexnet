@@ -1,0 +1,244 @@
+﻿/*paleta de colores 
+    $colorVerde: #68F551;
+    $colorMoradoClaro: #D05DF5;
+    $color3: #8AF545;
+    $color4: #BA2B90; morado no se cual
+    $colorMoradoUtilizado: #A303A8;
+    $color5: #B4F538;
+    $colorMoradoFondo: #411c4d */ 
+@font-face {
+    font-family: Pattaya;
+    src: url(../fonts-fuentes/Pattaya-Regular.ttf);
+}
+@media only screen and (max-width:405px) {
+    .pmobile {
+        display: none;
+    }
+    .logo {
+        padding-left: 0px;
+        margin-left: 0px;
+        border-left: 0px;  
+        width: 250px !important;
+    }
+}
+@media only screen and (max-width:330px){
+    .header__menu ul {
+        left: 218px;
+    }
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62,5%;
+    font-family: Verdana;
+    color: white;
+}
+header {
+    background-color: #68F551;/*#21c08b; Color verde de la hermosura de profesora que tuve*/
+    font-size: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    height: 45px;
+    justify-content: space-between;
+    align-items: center;
+}
+header img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+.logo {
+    font-family: Pattaya;
+    color: #A303A8;
+    width: 300px;
+    margin-left: 5px;
+    margin-top: -4px;
+}
+.header__menu {
+    color: #A303A8;
+    border-radius: 10px;
+    margin-right: 0px;
+    align-items: center;
+    margin-top: -7px;
+}
+.header__menu--profile {
+    display: flex;
+    align-items: center;
+}
+.header__menu--profile p {
+    font-size: 1.1rem;
+    margin-left: -1px;
+    margin-right: 20px;
+}
+.header__menu ul { /* Antes era header ul {} pero lo cambie para que no afecte despues el orden de importancia*/
+    list-style: none;
+    display: none;
+    padding: 0px;
+    position: absolute;
+    width: 200px;
+    text-align: right;
+    margin: 0px 0px 0px -14px;
+    background-color: #68F551;
+    margin-left: -99px;
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.header__menu:hover ul, ul:hover {
+    display: block;
+}
+.header__menu li {
+    margin: 10px 10px; /*10 pixeles para top y bottom y 0 px para left y right*/
+}
+.header__menu li a {
+    color: #A303A8;
+    text-decoration: none;
+}
+.header__menu li a:hover {
+    text-decoration: underline;
+}
+body {
+    background-color: #411c4d;
+}
+p {
+    font-size: 1.3rem;
+}
+.main {
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+.main__title {
+    color: #68F551;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.input {
+   border: 2px solid #68F551;
+   border-radius: 40px;
+   width: 70%;
+   color: #68F551;
+   font-family: pattaya;
+   font-size: 1.6rem;
+   height: 40px;
+   padding: 0 20px;
+   background-color: rgba(255, 255, 255, 0.1);
+   /*rgba donde la a hace alusion a la opacidad*/
+   outline: none;
+   margin-top: 10px;
+
+   background-image: url('./imgs/lupa.png');
+   background-repeat: no-repeat;
+   background-size: 1.5rem;
+   background-position: center;
+   background-position-x: 98%;
+}
+::placeholder {
+    color: #A303A8;
+}
+/*comienza diseño del carrousel*/
+h3 {
+    margin: 10px;
+    margin-bottom: 20px;
+}
+.carouselMilista {
+    width: 100%;
+    overflow: scroll;
+    /*ocultary*/
+    overflow-y: hidden;
+    /*ocultar el scrollbar sin eliminar la funcion de desplazamiento*/
+    scrollbar-width: none;
+    padding: 30px;
+    position: relative;
+    height: 450px;
+    padding-top: 50px;
+}
+.carouselMilista__contenedor {
+    white-space: nowrap;
+    margin: 70px 0px;
+    padding-bottom: 70px;
+}
+.carouselMilista-item {
+    width: 200px;
+    height: 250px;
+    border-radius: 20px;
+   /* background-color: violet;*/
+    overflow: hidden;
+    margin-right: 10px;
+    display: inline-block;
+    cursor: pointer;
+    transition: 450ms all;
+    transform-origin: center left;
+    /*interesante lo que se hizo con transition y transform y en las siguientes hovers o pseudoelementos*/
+    position: relative;
+}
+.carouselMilista-item:hover ~ .carouselMilista-item {
+    transform: translate3d(100px, 0, 0);
+}
+.carouselMilista__contenedor:hover .carouselMilista-item {
+    opacity: 0.3;
+}
+.carouselMilista__contenedor:hover .carouselMilista-item:hover {
+    transform: scale(1.5);
+    opacity: 1;
+}
+/*comienza la configuracion interna del carrusel*/
+.carousel-item__img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    /*para que mantenga la imagen su tamaño original le vamos a poner la siguiente configuracion llamada object-fit: cover*/
+}
+.carousel-item__details {
+    /*background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+	esta bien pero podemos hacer de otras formas el background como esta:
+background: linear-gradient(to bottom, #defff5 0%, var(--color-primario) 80%, var(--color-azul) 100%);
+    
+*/
+    font-size: 1rem;
+    opacity: 0;
+    transition: 450ms opacity;
+    /*transition = para darle al item una animacion de aparicion paulatina*/
+    padding: 10px 10px;
+    position:absolute;
+    top: 70%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /*adicionales*/
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+} 
+.carousel-item__details p {
+    margin: 5px;
+    font-size: 0.8rem;
+    margin-top: 0px;
+}
+.carousel-item__details img {
+    height: 20px;
+    margin: 5px;
+}
+.carouselMilista__contenedor:hover .carousel-item__details {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    opacity: 1;
+    color: white;
+    font-size: 1rem;
+    transition: 450ms opacity;
+    padding: 10px 10px;
+    position:absolute;
+    top: 70%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+img .playButton:hover {
+    height: 35px;
+}
+img .FavoritosButton:hover {
+    height: 35px;
+}
